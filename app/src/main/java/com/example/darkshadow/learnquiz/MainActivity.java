@@ -37,15 +37,17 @@ public class MainActivity extends AppCompatActivity
     ListView chapterlistview;
     ImageView backword,forward,backwordBottom,forwardBottom;
     TextView tutorial;
-    TextView chaptername;
+    TextView chaptername,quizOnThisChapter;
     Button gridOne;
     Button gridTwo;
     LinearLayout menuGridView;
     strings strings=new strings();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final Intent intent = new Intent(MainActivity.this, homescreen.class);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById( R.id.chapterlistview );
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity
         forwardBottom=(ImageView) findViewById(R.id.forwardBottom);
         tutorial=(TextView) findViewById(R.id.tutorial);
         chaptername=(TextView) findViewById(R.id.chaptername);
+        quizOnThisChapter=(TextView) findViewById(R.id.quizOnThisChapter);
         gridOne=(Button) findViewById(R.id.gridOne);
         gridTwo=(Button) findViewById(R.id.gridTwo);
         menuGridView=(LinearLayout) findViewById(R.id.menu);
@@ -155,6 +158,13 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+        quizOnThisChapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("chapterNumber", String.valueOf(chapterOnGoing));
+                startActivity(intent);
+            }
+        });
 
         gridOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +178,7 @@ public class MainActivity extends AppCompatActivity
         gridTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, homescreen.class);
+                intent.putExtra("chapterNumber", String.valueOf(0));
                 startActivity(intent);
             }
         });

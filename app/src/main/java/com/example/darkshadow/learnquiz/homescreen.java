@@ -165,6 +165,9 @@ public class homescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
 
+        Bundle extras = getIntent().getExtras();
+        chapterNo= Integer.parseInt(extras.getString("chapterNumber"));
+        Log.d("passed", String.valueOf(chapterNo));
         //Sound wrong right
         final MediaPlayer wrong = MediaPlayer.create(homescreen.this, R.raw.wrong);
         final MediaPlayer correct = MediaPlayer.create(homescreen.this, R.raw.correct);
