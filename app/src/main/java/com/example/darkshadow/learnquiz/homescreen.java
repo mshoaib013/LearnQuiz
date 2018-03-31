@@ -43,9 +43,8 @@ public class homescreen extends AppCompatActivity {
     private static final String FORMAT = "%02d:%02d";
     TextToSpeech tts;
     private int clicked=0;
+    int chapterNo=0;
 
-
-    public String[][] que=new String[100][100];
     private int questionNo=0;
     private String runningQuestion;
 
@@ -59,6 +58,7 @@ public class homescreen extends AppCompatActivity {
     private CountDownTimer timeOutRed;
     private int timeTaken=0;
 
+    private questions questions=new questions();
 
 
 
@@ -143,12 +143,12 @@ public class homescreen extends AppCompatActivity {
 
     //set every question method
     public void setQuestion(){
-        runningQuestion=que[questionNo][0];
-        q.setText(String.valueOf(questionNo+1)+".  "+que[questionNo][0]);
-        c1.setText(que[questionNo][1]);
-        c2.setText(que[questionNo][2]);
-        c3.setText(que[questionNo][3]);
-        c4.setText(que[questionNo][4]);
+        runningQuestion=questions.que[chapterNo][questionNo][0];
+        q.setText(String.valueOf(questionNo+1)+".  "+questions.que[chapterNo][questionNo][0]);
+        c1.setText(questions.que[chapterNo][questionNo][1]);
+        c2.setText(questions.que[chapterNo][questionNo][2]);
+        c3.setText(questions.que[chapterNo][questionNo][3]);
+        c4.setText(questions.que[chapterNo][questionNo][4]);
     }
 
 
@@ -198,79 +198,6 @@ public class homescreen extends AppCompatActivity {
         scoreStar=(ImageView) findViewById(R.id.scoreStar);
         finalScoreTextview=(TextView) findViewById(R.id.finalScoreTextview);
         nextQuestionSetButton=(Button) findViewById(R.id.goForNextSet);
-
-
-
-        //question declear
-        que[0][0]="Whats Your name??";
-        que[0][1]="Shoab";
-        que[0][2]="Mehedi";
-        que[0][3]="WTF!!!!";
-        que[0][4]="I";
-        que[0][5]="1";
-
-        que[1][0]="Your NSU CGPA??";
-        que[1][1]="4.00";
-        que[1][2]="3.00";
-        que[1][3]="Less than 2";
-        que[1][4]="Between 2 & 3";
-        que[1][5]="4";
-
-        que[2][0]="Fav category";
-        que[2][1]="w";
-        que[2][2]="e";
-        que[2][3]="r";
-        que[2][4]="t";
-        que[2][5]="3";
-
-        que[3][0]="worst teacher of ECE";
-        que[3][1]="SaM";
-        que[3][2]="Mle";
-        que[3][3]="SvA";
-        que[3][4]="All";
-        que[3][5]="4";
-
-        que[4][0]="Greatest musicians of BD";
-        que[4][1]="Mahafujur Rahman";
-        que[4][2]="Tahasan";
-        que[4][3]="Ali G STAR";
-        que[4][4]="None of them";
-        que[4][5]="2";
-
-        que[5][0]="Whats Your name??";
-        que[5][1]="Shoab";
-        que[5][2]="Mehedi";
-        que[5][3]="WTF!!!!";
-        que[5][4]="I";
-        que[5][5]="1";
-
-        que[6][0]="Your NSU CGPA??";
-        que[6][1]="4.00";
-        que[6][2]="3.00";
-        que[6][3]="Less than 2";
-        que[6][4]="Between 2 & 3";
-        que[6][5]="4";
-
-        que[7][0]="Fav  category";
-        que[7][1]="ab";
-        que[7][2]="a";
-        que[7][3]="s";
-        que[7][4]="d";
-        que[7][5]="3";
-
-        que[8][0]="worst teacher of ECE";
-        que[8][1]="SaM";
-        que[8][2]="Mle";
-        que[8][3]="SvA";
-        que[8][4]="All";
-        que[8][5]="4";
-
-        que[9][0]="Greatest musicians of BD";
-        que[9][1]="Mahafujur Rahman";
-        que[9][2]="Tahasan";
-        que[9][3]="Ali G STAR";
-        que[9][4]="None of them";
-        que[9][5]="2";
 
 
 
@@ -373,7 +300,7 @@ public class homescreen extends AppCompatActivity {
                 if (clicked>1) {
                     Toast.makeText(homescreen.this, "Already Answered" + "Correction not Possible", Toast.LENGTH_SHORT).show();
                 }
-                else if ((que[questionNo][5]).equals(String.valueOf(1))) {
+                else if ((questions.que[chapterNo][questionNo][5]).equals(String.valueOf(1))) {
                     //bg.setBackgroundColor(Color.GREEN);
                     c1.setBackgroundResource(R.drawable.rectangle_shape_green);
                     questionNo++;
@@ -384,9 +311,9 @@ public class homescreen extends AppCompatActivity {
                 else {
                     //bg.setBackgroundColor(Color.RED);
                     c1.setBackgroundResource(R.drawable.rectangle_shape_red);
-                    if (que[questionNo][5].equals(String.valueOf(2)))
+                    if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(2)))
                         c2.setBackgroundResource(R.drawable.rectangle_shape_green);
-                    else if (que[questionNo][5].equals(String.valueOf(3)))
+                    else if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(3)))
                         c3.setBackgroundResource(R.drawable.rectangle_shape_green);
                     else
                         c4.setBackgroundResource(R.drawable.rectangle_shape_green);
@@ -406,7 +333,7 @@ public class homescreen extends AppCompatActivity {
                 if (clicked>1) {
                     Toast.makeText(homescreen.this, "Already Answered" + "Correction not Possible", Toast.LENGTH_SHORT).show();
                 }
-                else if ((que[questionNo][5]).equals(String.valueOf(2))) {
+                else if ((questions.que[chapterNo][questionNo][5]).equals(String.valueOf(2))) {
                     //bg.setBackgroundColor(Color.GREEN);
                     c2.setBackgroundResource(R.drawable.rectangle_shape_green);
                     correct.start();
@@ -417,9 +344,9 @@ public class homescreen extends AppCompatActivity {
                 else {
                     //bg.setBackgroundColor(Color.RED);
                     c2.setBackgroundResource(R.drawable.rectangle_shape_red);
-                    if (que[questionNo][5].equals(String.valueOf(1)))
+                    if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(1)))
                         c1.setBackgroundResource(R.drawable.rectangle_shape_green);
-                    else if (que[questionNo][5].equals(String.valueOf(3)))
+                    else if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(3)))
                         c3.setBackgroundResource(R.drawable.rectangle_shape_green);
                     else
                         c4.setBackgroundResource(R.drawable.rectangle_shape_green);
@@ -439,7 +366,7 @@ public class homescreen extends AppCompatActivity {
                 if (clicked>1) {
                     Toast.makeText(homescreen.this, "Already Answered" + "Correction not Possible", Toast.LENGTH_SHORT).show();
                 }
-                else if ((que[questionNo][5]).equals(String.valueOf(3))) {
+                else if ((questions.que[chapterNo][questionNo][5]).equals(String.valueOf(3))) {
                     //bg.setBackgroundColor(Color.GREEN);
                     c3.setBackgroundResource(R.drawable.rectangle_shape_green);
                     questionNo++;
@@ -450,9 +377,9 @@ public class homescreen extends AppCompatActivity {
                 else {
                     //bg.setBackgroundColor(Color.RED);
                     c3.setBackgroundResource(R.drawable.rectangle_shape_red);
-                    if (que[questionNo][5].equals(String.valueOf(2)))
+                    if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(2)))
                         c2.setBackgroundResource(R.drawable.rectangle_shape_green);
-                    else if (que[questionNo][5].equals(String.valueOf(1)))
+                    else if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(1)))
                         c1.setBackgroundResource(R.drawable.rectangle_shape_green);
                     else
                         c4.setBackgroundResource(R.drawable.rectangle_shape_green);
@@ -472,7 +399,7 @@ public class homescreen extends AppCompatActivity {
                 if (clicked>1) {
                     Toast.makeText(homescreen.this, "Already Answered!! Correction not Possible", Toast.LENGTH_SHORT).show();
                 }
-                else if ((que[questionNo][5]).equals(String.valueOf(4))) {
+                else if ((questions.que[chapterNo][questionNo][5]).equals(String.valueOf(4))) {
                     //bg.setBackgroundColor(Color.GREEN);
                     c4.setBackgroundResource(R.drawable.rectangle_shape_green);
                     questionNo++;
@@ -483,9 +410,9 @@ public class homescreen extends AppCompatActivity {
                 else {
                     //bg.setBackgroundColor(Color.RED);
                     c4.setBackgroundResource(R.drawable.rectangle_shape_red);
-                    if (que[questionNo][5].equals(String.valueOf(2)))
+                    if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(2)))
                         c2.setBackgroundResource(R.drawable.rectangle_shape_green);
-                    else if (que[questionNo][5].equals(String.valueOf(3)))
+                    else if (questions.que[chapterNo][questionNo][5].equals(String.valueOf(3)))
                         c3.setBackgroundResource(R.drawable.rectangle_shape_green);
                     else
                         c1.setBackgroundResource(R.drawable.rectangle_shape_green);
@@ -517,7 +444,6 @@ public class homescreen extends AppCompatActivity {
                 scoreview.setText("0/10");
                 timeCountdown.setVisibility(View.VISIBLE);
                 over.setVisibility(View.INVISIBLE);
-                setQuestion();
                 q.setVisibility(View.VISIBLE);
                 timeout.cancel();
                 timeOutRed.cancel();
@@ -527,6 +453,8 @@ public class homescreen extends AppCompatActivity {
                 c2.setBackgroundResource(R.drawable.frame);
                 c3.setBackgroundResource(R.drawable.frame);
                 c4.setBackgroundResource(R.drawable.frame);
+                setQuestion();
+                chapterNo++;
 
             }
         });
