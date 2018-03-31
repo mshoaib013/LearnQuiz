@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     private ListView listView;
     ScrollView tutorialview;
     ListView chapterlistview;
-    ImageView backword,forward;
+    ImageView backword,forward,backwordBottom,forwardBottom;
     TextView tutorial;
     TextView chaptername;
     Button gridOne;
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity
         chapterlistview=(ListView) findViewById(R.id.chapterlistview);
         backword=(ImageView) findViewById(R.id.bacward);
         forward=(ImageView) findViewById(R.id.forward);
+        backwordBottom=(ImageView) findViewById(R.id.bacwardBottom);
+        forwardBottom=(ImageView) findViewById(R.id.forwardBottom);
         tutorial=(TextView) findViewById(R.id.tutorial);
         chaptername=(TextView) findViewById(R.id.chaptername);
         gridOne=(Button) findViewById(R.id.gridOne);
@@ -128,6 +130,32 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+
+        backwordBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (chapterOnGoing>0){
+                    chapterOnGoing=chapterOnGoing-1;
+                    backwordForwardController(0);
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"Nothing Before",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        forwardBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (chapterOnGoing<4){
+                    chapterOnGoing=chapterOnGoing+1;
+                    backwordForwardController(1);
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"Nothing Next",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         gridOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
