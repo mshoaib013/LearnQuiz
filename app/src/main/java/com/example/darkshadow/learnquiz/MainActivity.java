@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     TextView tutorial;
     TextView chaptername;
     Button gridOne;
+    Button gridTwo;
     LinearLayout menuGridView;
     strings strings=new strings();
     @Override
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         tutorial=(TextView) findViewById(R.id.tutorial);
         chaptername=(TextView) findViewById(R.id.chaptername);
         gridOne=(Button) findViewById(R.id.gridOne);
+        gridTwo=(Button) findViewById(R.id.gridTwo);
         menuGridView=(LinearLayout) findViewById(R.id.menu);
         viewno=0;
 
@@ -133,6 +135,13 @@ public class MainActivity extends AppCompatActivity
                 chapterlistview.setVisibility(View.VISIBLE);
                 tutorialview.setVisibility(View.GONE);
                 viewno=1;
+            }
+        });
+        gridTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, homescreen.class);
+                startActivity(intent);
             }
         });
     }

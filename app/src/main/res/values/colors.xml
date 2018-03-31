@@ -2,5 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="topNavigationBar">#4a61e1</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="qcol"> #3caf84 </color>
+    <color name="ccol"> #e3a020 </color>
+    <color name="offWhite"> #f5f3ef </color>
+    <color name="white">#FFFFFF</color>
 </resources>
