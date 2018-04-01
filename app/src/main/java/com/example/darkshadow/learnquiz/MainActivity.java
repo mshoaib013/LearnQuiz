@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity
                 tutorial.setText(strings.chapter[position][1]);
                 tutorialview.setScrollY(0);
                 chapterOnGoing=position;
+                quizOnThisChapter.setText("Quiz on "+ strings.chapter[chapterOnGoing][0]);
 
             }
         });
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity
                 if (chapterOnGoing>0){
                     chapterOnGoing=chapterOnGoing-1;
                     backwordForwardController(0);
+                    quizOnThisChapter.setText("Quiz on "+ strings.chapter[chapterOnGoing][0]);
                 }
                 else {
                     Toast.makeText(MainActivity.this,"Nothing Before",Toast.LENGTH_SHORT).show();
@@ -127,6 +129,7 @@ public class MainActivity extends AppCompatActivity
                 if (chapterOnGoing<4){
                     chapterOnGoing=chapterOnGoing+1;
                     backwordForwardController(1);
+                    quizOnThisChapter.setText("Quiz on "+ strings.chapter[chapterOnGoing][0]);
                 }
                 else {
                     Toast.makeText(MainActivity.this,"Nothing Next",Toast.LENGTH_SHORT).show();
@@ -140,6 +143,7 @@ public class MainActivity extends AppCompatActivity
                 if (chapterOnGoing>0){
                     chapterOnGoing=chapterOnGoing-1;
                     backwordForwardController(0);
+                    quizOnThisChapter.setText("Quiz on "+ strings.chapter[chapterOnGoing][0]);
                 }
                 else {
                     Toast.makeText(MainActivity.this,"Nothing Before",Toast.LENGTH_SHORT).show();
@@ -152,6 +156,7 @@ public class MainActivity extends AppCompatActivity
                 if (chapterOnGoing<4){
                     chapterOnGoing=chapterOnGoing+1;
                     backwordForwardController(1);
+                    quizOnThisChapter.setText("Quiz on "+ strings.chapter[chapterOnGoing][0]);
                 }
                 else {
                     Toast.makeText(MainActivity.this,"Nothing Next",Toast.LENGTH_SHORT).show();

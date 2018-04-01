@@ -6,8 +6,8 @@ android:weightSum="6"
 android:background="@color/colorAccent">
 <ImageView
     android:id="@+id/bacward"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
     android:layout_weight="1"
     android:src="@drawable/backward"
     android:layout_gravity="center"
@@ -27,8 +27,8 @@ android:background="@color/colorAccent">
     android:textColor="#FFFFFFFF"/>
 <ImageView
     android:id="@+id/forward"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
     android:layout_weight="1"
     android:src="@drawable/forward"
     android:layout_gravity="center"

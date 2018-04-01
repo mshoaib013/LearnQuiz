@@ -7,7 +7,7 @@ package com.example.darkshadow.learnquiz;
 public class strings {
     String[][]  chapter=new String[50][2];
     strings(){
-        chapter[0][0]="Chapter One";
+        chapter[0][0]="Chapter One Test purpose long text";
         chapter[0][1]="\n" +
                 "What is Lorem Ipsum?\n" +
                 "\n" +

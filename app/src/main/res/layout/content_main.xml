@@ -76,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Test Yourself"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textAlignment="center"
