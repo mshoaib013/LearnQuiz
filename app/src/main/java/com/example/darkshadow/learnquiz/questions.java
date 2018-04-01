@@ -10,8 +10,8 @@ public class questions {
        que[0][0][1]="Shoab";
        que[0][0][2]="Mehedi";
        que[0][0][3]="WTF!!!!";
-       que[0][0][4]="I";
-       que[0][0][5]="chapter one";
+       que[0][0][4]="chapter one";
+       que[0][0][5]="Mehedi";
 
        que[0][1][0]="Your NSU CGPA??";
        que[0][1][1]="4.00";
@@ -81,8 +81,8 @@ public class questions {
        que[1][0][1]="Shoab";
        que[1][0][2]="Mehedi";
        que[1][0][3]="WTF!!!!";
-       que[1][0][4]="I";
-       que[1][0][5]="chapter two";
+       que[1][0][4]="Chapter Two";
+       que[1][0][5]="Mehedi";
 
        que[1][1][0]="Your NSU CGPA??";
        que[1][1][1]="4.00";
