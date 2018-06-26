@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|right"
         android:layout_margin="0dp"
-        app:srcCompat="@drawable/dollar" />
+        app:srcCompat="@drawable/soundicon" />
 
 </android.support.design.widget.CoordinatorLayout>

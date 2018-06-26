@@ -165,6 +165,7 @@ public class homescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
 
+
         Bundle extras = getIntent().getExtras();
         chapterNo= Integer.parseInt(extras.getString("chapterNumber"));
         Log.d("passed", String.valueOf(chapterNo));
