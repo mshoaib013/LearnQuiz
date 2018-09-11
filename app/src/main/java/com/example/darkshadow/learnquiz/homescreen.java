@@ -8,12 +8,20 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -39,6 +47,11 @@ public class homescreen extends AppCompatActivity {
     private Button nextQuestionSetButton;
 
 
+
+    //firebase & arraylist
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("QuesrtionSet").child("1");
+    ArrayList<String> arrayList = new ArrayList<>();
 
 
     private static final String FORMAT = "%02d:%02d";
@@ -166,6 +179,23 @@ public class homescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
 
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                String q = dataSnapshot.child("1").child("q").getValue(String.class);
+//                String q1 = dataSnapshot.child("1").child("1").getValue(String.class);
+//                String q2 = dataSnapshot.child("1").child("2").getValue(String.class);
+//                String q3 = dataSnapshot.child("1").child("3").getValue(String.class);
+//                String q4 = dataSnapshot.child("1").child("4").getValue(String.class);
+                String key=dataSnapshot.getKey();
+                String value = dataSnapshot.getValue(String.class);
+                Log.d("aha", key+"  "+value);
+            }
+            @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
+            @Override public void onChildRemoved(DataSnapshot dataSnapshot) { }
+            @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+            @Override public void onCancelled(DatabaseError databaseError) { }
+        });
 
         Bundle extras = getIntent().getExtras();
         chapterNo= Integer.parseInt(extras.getString("chapterNumber"));
